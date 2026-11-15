@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ALI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Readex+Pro:wght@300;400;600;700&family=Saira:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Design A · Ruins & Ember: midnight navy, one bonfire glow, cold silver text */
+  :root {
+    --bg:#060a14; --card:#0b1226; --cardbg:linear-gradient(180deg,#0e1834 0%,#0a1125 100%);
+    --line:#18233f; --line2:#2a3a63; --ink:#e6eaf4; --mute:#8794b3;
+    --accent:#E0301E; --accent2:#ff7a4d; --glow:0 0 26px rgba(224,48,30,.22);
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; min-height:100vh; color:var(--ink); font-family:"Readex Pro", system-ui, sans-serif; font-weight:300; line-height:1.7; position:relative; overflow-x:hidden;
+    background:
+      radial-gradient(ellipse 80% 45% at 50% 108%, rgba(224,48,30,.26), transparent 62%),
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(40,70,140,.35), transparent 70%),
+      linear-gradient(#060a14, #0a1124 70%, #090d1c);
+    background-attachment:fixed; }
+  body::before { content:""; position:fixed; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(0,0,0,.6) 100%); }
+  body::after { content:""; position:fixed; left:0; right:0; top:0; height:14px; background:#000; z-index:8; box-shadow:0 calc(100vh - 14px) 0 #000; pointer-events:none; }
+  .sn { font-family:"Saira", "Readex Pro", sans-serif; font-weight:700; }
+  .page { position:relative; z-index:2; }
+
+  /* fog and embers */
+  .fx { position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+  .fx::before, .fx::after { content:""; position:absolute; left:-30%; width:160%; height:42%; filter:blur(40px); opacity:.55;
+    background:radial-gradient(ellipse at 30% 50%, rgba(120,150,210,.16), transparent 60%), radial-gradient(ellipse at 75% 50%, rgba(90,120,190,.12), transparent 62%);
+    animation:fog 38s ease-in-out infinite alternate; }
+  .fx::before { top:48%; }
+  .fx::after { top:12%; animation-duration:52s; animation-direction:alternate-reverse; opacity:.35; }
+  @keyframes fog { from { transform:translateX(-6%); } to { transform:translateX(6%); } }
+  .ember { position:absolute; bottom:-12px; border-radius:50%; background:#ffb48a; box-shadow:0 0 8px 2px rgba(255,110,60,.7); opacity:0; animation:rise linear infinite; }
+  @keyframes rise { 0% { transform:translate(0,0); opacity:0; } 10% { opacity:.9; } 70% { opacity:.5; } 100% { transform:translate(30px,-92vh); opacity:0; } }
+
+  /* layout */
+  .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+  .top { display:flex; align-items:center; gap:10px; padding:22px 0 18px; }
+  .mark { font-family:"Cinzel", serif; font-weight:700; letter-spacing:.2em; font-size:15px; }
+  .grow { flex:1; }
+  .ghost { font:inherit; font-size:13px; font-weight:400; color:var(--ink); background:transparent; border:1px solid var(--line2); padding:5px 14px; cursor:pointer; }
+  .ghost:hover { border-color:var(--accent); color:var(--accent2); }
+  .hero { padding:34px 0 8px; text-align:center; }
+  .hero h1 { margin:0; font-size:clamp(34px, 8vw, 66px); line-height:1.15; font-weight:700; text-shadow:0 0 38px rgba(224,48,30,.38); }
+  html[lang="en"] .hero h1 { font-family:"Cinzel", serif; letter-spacing:.1em; }
+  .hero p { margin:12px auto 0; color:var(--mute); max-width:560px; }
+  .rule { display:flex; align-items:center; gap:14px; margin:26px auto 12px; max-width:420px; }
+  .rule::before, .rule::after { content:""; flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line2), transparent); }
+  .rule i { width:9px; height:9px; transform:rotate(45deg); background:var(--accent); box-shadow:0 0 14px var(--accent); }
+  .count { text-align:center; color:var(--mute); font-size:13px; }
+  .count b { color:var(--ink); font-size:22px; margin-inline-end:6px; }
+  main { padding:26px 0 30px; }
+  .controls { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px; }
+  .search { flex:1 1 220px; font:inherit; padding:10px 14px; border:1px solid var(--line); background:var(--card); color:var(--ink); }
+  .search::placeholder { color:var(--mute); }
+  .search:focus { outline:1px solid var(--accent); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { font:inherit; font-size:14px; font-weight:400; padding:6px 14px; background:transparent; border:1px solid var(--line); color:var(--mute); cursor:pointer; }
+  .chip:hover { color:var(--ink); border-color:var(--line2); }
+  .chip[aria-pressed="true"] { color:var(--ink); border-color:var(--accent); box-shadow:inset 0 -2px 0 var(--accent); }
+  section.group { margin-top:34px; }
+  section.group h2 { font-size:15px; font-weight:600; letter-spacing:.04em; margin:0 0 14px; display:flex; align-items:center; gap:12px; }
+  section.group h2::after { content:""; flex:1; height:1px; background:linear-gradient(90deg, var(--line2), transparent); }
+  html[dir="rtl"] section.group h2::after { background:linear-gradient(270deg, var(--line2), transparent); }
+  section.group h2 span { color:var(--mute); font-weight:400; order:3; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
+  .card { position:relative; background:var(--cardbg); border:1px solid var(--line); padding:20px 20px 18px; display:flex; flex-direction:column; gap:10px; transition:border-color .25s, box-shadow .25s, transform .25s; }
+  .card:hover { border-color:var(--accent); box-shadow:var(--glow); transform:translateY(-2px); }
+  .card::before, .card::after { content:""; position:absolute; width:12px; height:12px; border:1px solid var(--line2); transition:border-color .25s; }
+  .card::before { top:-1px; inset-inline-start:-1px; border-width:1px 0 0 1px; }
+  html[dir="rtl"] .card::before { border-width:1px 1px 0 0; }
+  .card::after { bottom:-1px; inset-inline-end:-1px; border-width:0 1px 1px 0; }
+  html[dir="rtl"] .card::after { border-width:0 0 1px 1px; }
+  .card:hover::before, .card:hover::after { border-color:var(--accent); }
+  .card h3 { margin:0; font-size:19px; font-weight:600; line-height:1.4; }
+  .card p { margin:0; color:var(--mute); font-size:15px; }
+  .meta { display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:12px; }
+  .st { display:inline-flex; align-items:center; gap:7px; font-weight:600; }
+  .st::before { content:""; width:9px; height:9px; border-radius:50%; border:1px solid var(--mute); }
+  .st.live::before { background:var(--accent); border-color:var(--accent); box-shadow:0 0 10px var(--accent), 0 0 3px var(--accent2); }
+  .st.building { color:var(--mute); }
+  .tg { color:var(--mute); }
+  .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; padding-top:6px; }
+  .links a { font-size:14px; font-weight:600; text-decoration:none; padding:6px 16px; color:var(--ink); border:1px solid var(--line2); }
+  .links a:first-child { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .links a:hover { filter:brightness(1.15); }
+  .empty { color:var(--mute); padding:40px 0; text-align:center; }
+  .shelf { text-align:center; padding:6px 0 40px; }
+  .shelf h2 { font-family:"Cinzel", "Readex Pro", serif; font-size:13px; font-weight:600; letter-spacing:.18em; color:var(--mute); margin:0 0 14px; }
+  .shelf .row { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+  .shelf .row span { font-size:15px; padding:6px 18px; border:1px solid var(--line2); }
+  footer { text-align:center; color:var(--mute); font-size:12px; padding:0 0 60px; }
+  @media (max-width:560px) { .wrap { padding:0 16px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation:none !important; transition:none !important; } .ember { display:none; } }
+</style>
+</head>
+<body>
+<div class="fx" id="fx" aria-hidden="true"></div>
+<div class="page">
+  <div class="wrap">
+    <div class="top">
+      <span class="mark" id="mark"></span>
+      <span class="grow"></span>
+      <button class="ghost" id="lang" type="button"></button>
+    </div>
+    <header class="hero">
+      <h1 id="title"></h1>
+      <p id="sub"></p>
+      <div class="rule"><i></i></div>
+      <div class="count" id="count"></div>
+    </header>
+    <main>
+      <div class="controls">
+        <input class="search" id="q" type="search" autocomplete="off">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div id="list"></div>
+    </main>
+    <section class="shelf" id="shelf"></section>
+    <footer id="foot"></footer>
+  </div>
+</div>
+<script>
+(function () {
+  var DATA = {"brand":"ALI","title":{"ar":"أعمال علي","en":"ALI · WORKS"},"subtitle":{"ar":"كل شي بنيته… بمكان واحد.","en":"Everything I have built, in one place."},"status":{"live":{"ar":"مشتعل","en":"Lit"},"building":{"ar":"خامد","en":"Unlit"}},"footer":{"ar":"ALI · WORKS","en":"ALI · WORKS"},"categories":[{"id":"field","ar":"تطبيقات الموقع والمكتب","en":"Site & office apps"},{"id":"desktop","ar":"برامج سطح المكتب","en":"Desktop programs"},{"id":"tools","ar":"أدوات وأتمتة","en":"Tools & automation"},{"id":"docs","ar":"ملفات وتصاميم","en":"Documents & design"}],"items":[{"id":"site-report","category":"field","name":{"ar":"تقرير الموقع","en":"CVI Site Report"},"desc":{"ar":"تطبيق موبايل يشتغل بدون إنترنت. المهندس يختار المشروع، يصوّر ويكتب ملاحظته على المخطط، والتقرير يطلع PDF.","en":"Offline phone app. The engineer picks the project, photographs and marks notes on the plan, and the report comes out as PDF."},"status":"live","platform":["phone","web"],"links":[{"label":{"ar":"افتح التطبيق","en":"Open the app"},"url":"https://potatotype0.github.io/site-report/"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/cvi-site-report"}]},{"id":"site-plans-maker","category":"field","name":{"ar":"صانع مخططات الموقع","en":"CVI Site Plans Maker"},"desc":{"ar":"يحوّل ملفات PDF للمخططات إلى صور لكل طابق، وتروح لمجلد SUP\\PLN حتى يستعملها تطبيق تقرير الموقع.","en":"Turns plan PDFs into one image per floor, saved to each project's SUP\\PLN folder for the Site Report app."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .exe","en":"Download · .exe"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/CVI-Site-Plans-Maker.exe"}]},{"id":"task-manager","category":"field","name":{"ar":"مدير مهام CVI","en":"CVI Task Manager"},"desc":{"ar":"تطبيق مهام لكل الشركة، عربي وإنكليزي، وقاعدة بياناته على Supabase.","en":"Company-wide task app in Arabic and English, with its database on Supabase."},"status":"live","platform":["web"],"links":[{"label":{"ar":"افتح التطبيق","en":"Open the app"},"url":"https://potatotype0.github.io/cvi-task-manager/"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/cvi-task-manager"}]},{"id":"drawing-manager","category":"field","name":{"ar":"مدير مخططات الفريق","en":"Team Drawing Manager"},"desc":{"ar":"تطبيق ويب لإدارة مخططات ومشاريع فريق الهندسة.","en":"Web app to manage the engineering team's drawings and projects."},"status":"building","platform":["web"],"links":[]},{"id":"docustock","category":"field","name":{"ar":"BMC دوكيوستوك","en":"BMC DocuStock"},"desc":{"ar":"يقرأ سندات المخزن المكتوبة بخط اليد من صورة، ويحوّلها إلى قاعدة بيانات وملف Excel. فك الضغط وشغّل البرنامج؛ يجهز بيانات مثال أول مرة.","en":"Reads handwritten warehouse slips from a photo into a database and an Excel file. Unzip and run; it builds example data on first start."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .zip","en":"Download · .zip"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/BMC-DocuStock.zip"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/bmc-docustock"}]},{"id":"site-boundary-tool","category":"desktop","name":{"ar":"أداة حدود الموقع","en":"Site Boundary Tool"},"desc":{"ar":"من الإحداثيات إلى الخريطة، وتصدير KML وSCR وDXF ونموذج ثلاثي الأبعاد. بترخيص، وعربي أولاً.","en":"From coordinates to map, exporting KML, SCR, DXF and a 3D model. Licensed, Arabic-first."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .zip","en":"Download · .zip"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/Site-Boundary-Tool.zip"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/site-boundary-tool"}]},{"id":"scenetrove","category":"desktop","name":{"ar":"سينتروف","en":"SceneTrove"},"desc":{"ar":"برنامج سطح مكتب أجهّزه للبيع.","en":"Desktop app I am preparing to sell."},"status":"building","platform":["desktop"],"links":[{"label":{"ar":"تحميل · ملف التثبيت","en":"Download · installer"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/SceneTrove-Setup-1.6.0.exe"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/scenetrove"}]},{"id":"projectnamer","category":"desktop","name":{"ar":"مسمّي المشاريع","en":"ProjectNamer"},"desc":{"ar":"ينشئ مجلدات المشاريع في CVI بالتسمية الموحدة.","en":"Creates CVI project folders with the standard naming."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .exe","en":"Download · .exe"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/ProjectNamer.exe"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/project-namer"}]},{"id":"house-tour","category":"desktop","name":{"ar":"جولة بيت بالواقع الافتراضي","en":"House VR line tour"},"desc":{"ar":"جولة بخطوط أبيض وأسود لمشروع RES-DAV-R5 تشتغل على نظارة Quest من المتصفح.","en":"A black-and-white line tour of RES-DAV-R5 that runs in the Quest headset browser."},"status":"live","platform":["web"],"links":[{"label":{"ar":"افتح الجولة","en":"Open the tour"},"url":"https://potatotype0.github.io/house-tour/"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/vr-lines"}]},{"id":"file-seeder","category":"tools","name":{"ar":"زارع ملفات المشاريع","en":"Project File Seeder"},"desc":{"ar":"ملف bat يحط سجل الملاحظات وتقرير الموقع القياسيين بمجلد SUP لكل المشاريع.","en":"A bat file that drops the standard Observation Log and Site Report into every project's SUP folder."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .zip","en":"Download · .zip"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/Project-File-Seeder.zip"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/cvi-tools"}]},{"id":"team-editor","category":"tools","name":{"ar":"محرّر أسماء الفريق","en":"Team Member Editor"},"desc":{"ar":"بتشغيلة وحدة يضيف أو يشيل أسماء الفريق من كل ملفات Excel بالشيتات.","en":"Adds or removes team names across every Team-sheet workbook in one run."},"status":"live","platform":["desktop"],"links":[{"label":{"ar":"تحميل · .zip","en":"Download · .zip"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/Team-Member-Editor.zip"},{"label":{"ar":"الكود","en":"Source"},"url":"https://github.com/Potatotype0/cvi-tools"}]},{"id":"plan-sync","category":"tools","name":{"ar":"مزامنة المخططات","en":"CVI Plan Sync"},"desc":{"ar":"مهمة مجدولة تنشر مخططات المشاريع من P: إلى مكتبة تقرير الموقع.","en":"A scheduled task that publishes project plans from P: to the Site Report library."},"status":"live","platform":["desktop"],"links":[]},{"id":"portfolio","category":"docs","name":{"ar":"بورتفوليو CVI","en":"CVI portfolio deck"},"desc":{"ar":"ملف A4 بوربوينت، ١٤٣ صفحة، فيه الأعمال والقطاعات ومشاريع الديكور.","en":"A4 PowerPoint book, 143 pages: sectors, projects and the interior work."},"status":"live","platform":["doc"],"links":[]},{"id":"cement-report","category":"docs","name":{"ar":"تقرير الإسمنت","en":"Cement research report"},"desc":{"ar":"تقرير عربي من ٧٠ صفحة عن معامل الإسمنت والخرسانة الجاهزة في العراق، وفيه قسم المنافسين.","en":"A 70-page Arabic report on cement plants and ready-mix in Iraq, with a competitors section."},"status":"live","platform":["doc"],"links":[]},{"id":"brochure","category":"docs","name":{"ar":"بروشور CVI","en":"CVI brochure"},"desc":{"ar":"بروشور عربي A5 عرضي، النسخة النهائية D جاهزة بملف PDF.","en":"Arabic A5 landscape brochure, final version D as a PDF."},"status":"live","platform":["doc"],"links":[{"label":{"ar":"تحميل · PDF","en":"Download · PDF"},"url":"https://github.com/Potatotype0/cvi-hub/releases/download/files/CVI-Brochure.pdf"}]}]};
+  var UI = {
+    ar: { search: 'ابحث…', all: 'الكل', lang: 'English', lock: 'قفل', empty: 'ما لكيت شي.', works: 'عمل', phone: 'موبايل', web: 'ويب', desktop: 'سطح المكتب', doc: 'ملف' },
+    en: { search: 'Search…', all: 'All', lang: 'العربية', lock: 'Lock', empty: 'Nothing found.', works: 'works', phone: 'Phone', web: 'Web', desktop: 'Desktop', doc: 'Document' }
+  };
+  var lang = 'ar';
+  try { lang = localStorage.getItem('hublang') || 'ar'; } catch (e) {}
+  var cat = 'all', query = '';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+  function safeUrl(u) { return /^https?:\/\//i.test(u) ? u : '#'; }
+  function tx(o) { return (o && (o[lang] || o.en || o.ar)) || ''; }
+
+  function matches(it) {
+    if (cat !== 'all' && it.category !== cat) return false;
+    if (!query) return true;
+    return (it.name.ar + ' ' + it.name.en + ' ' + it.desc.ar + ' ' + it.desc.en).toLowerCase().indexOf(query) !== -1;
+  }
+  function card(it) {
+    var u = UI[lang];
+    var tags = (it.platform || []).map(function (p) { return '<span class="tg">' + esc(u[p] || p) + '</span>'; }).join('');
+    var links = (it.links || []).map(function (l) { return '<a href="' + esc(safeUrl(l.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(tx(l.label)) + '</a>'; }).join('');
+    var st = DATA.status && DATA.status[it.status];
+    return '<article class="card"><h3>' + esc(tx(it.name)) + '</h3><div class="meta"><span class="st ' + esc(it.status) + '">' + esc(st ? tx(st) : it.status) + '</span>' + tags + '</div><p>' + esc(tx(it.desc)) + '</p>' + (links ? '<div class="links">' + links + '</div>' : '') + '</article>';
+  }
+  function render() {
+    var u = UI[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    $('mark').textContent = DATA.brand || '';
+    $('title').textContent = tx(DATA.title);
+    document.title = tx(DATA.title);
+    $('sub').textContent = tx(DATA.subtitle);
+    $('lang').textContent = u.lang;
+    $('q').placeholder = u.search;
+    $('foot').textContent = tx(DATA.footer);
+    $('count').innerHTML = '<b class="sn">' + DATA.items.length + '</b>' + esc(u.works);
+    var chips = '<button class="chip" type="button" data-cat="all" aria-pressed="' + (cat === 'all') + '">' + esc(u.all) + '</button>';
+    DATA.categories.forEach(function (c) { chips += '<button class="chip" type="button" data-cat="' + esc(c.id) + '" aria-pressed="' + (cat === c.id) + '">' + esc(tx(c)) + '</button>'; });
+    $('chips').innerHTML = chips;
+    var html = '', total = 0;
+    DATA.categories.forEach(function (c) {
+      var items = DATA.items.filter(function (it) { return it.category === c.id && matches(it); });
+      if (!items.length) return;
+      total += items.length;
+      html += '<section class="group"><h2>' + esc(tx(c)) + '<span class="sn">' + items.length + '</span></h2><div class="grid">' + items.map(card).join('') + '</div></section>';
+    });
+    $('list').innerHTML = total ? html : '<div class="empty">' + esc(u.empty) + '</div>';
+    $('shelf').innerHTML = (DATA.shelf && DATA.shelf.length) ? '<h2>' + esc(tx(DATA.shelfTitle)) + '</h2><div class="row">' + DATA.shelf.map(function (s) { return '<span>' + esc(tx(s)) + '</span>'; }).join('') + '</div>' : '';
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (t.dataset && t.dataset.cat) { cat = t.dataset.cat; render(); }
+  });
+  $('q').addEventListener('input', function () { query = this.value.trim().toLowerCase(); render(); $('q').focus(); });
+  $('lang').addEventListener('click', function () {
+    lang = lang === 'ar' ? 'en' : 'ar';
+    try { localStorage.setItem('hublang', lang); } catch (e) {}
+    render();
+  });
+
+  var fx = $('fx');
+  for (var i = 0; i < 22; i++) {
+    var s = document.createElement('span'); s.className = 'ember';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.width = s.style.height = (2 + Math.random() * 3) + 'px';
+    s.style.animationDuration = (9 + Math.random() * 12) + 's';
+    s.style.animationDelay = (-Math.random() * 20) + 's';
+    fx.appendChild(s);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
